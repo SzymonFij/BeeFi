@@ -1,0 +1,194 @@
+.page {
+  padding-top: 1rem;
+  max-width: 42rem;
+  margin: 0 auto;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  color: var(--color-gold);
+  margin: 0 0 1.5rem;
+}
+
+.empty {
+  font-size: clamp(1.05rem, 2.5vw, 1.1rem);
+  color: var(--color-text-muted);
+  margin: 0 0 1.5rem;
+  line-height: 1.5;
+}
+
+.link {
+  display: inline-block;
+  padding: 0.85rem 1.6rem;
+  min-height: var(--touch-min);
+  font-size: clamp(1.05rem, 2.5vw, 1.1rem);
+  background: var(--color-gold);
+  color: var(--color-bg);
+  text-decoration: none;
+  border-radius: var(--radius);
+  font-weight: 500;
+  transition: background 0.2s;
+}
+
+.link:hover {
+  background: var(--color-gold-light);
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+  flex-wrap: wrap;
+}
+
+.rowInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.rowName {
+  display: block;
+  font-weight: 500;
+  font-size: clamp(1.05rem, 2.5vw, 1.1rem);
+  color: var(--color-text);
+  margin-bottom: 0.25rem;
+}
+
+.rowPrice {
+  font-size: clamp(1rem, 2.5vw, 1.05rem);
+  color: var(--color-text-muted);
+}
+
+.rowActions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.quantity {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.qtyBtn {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-bg);
+  border: none;
+  color: var(--color-gold);
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.qtyBtn:hover {
+  background: rgba(212, 175, 55, 0.15);
+}
+
+.qtyNum {
+  min-width: 2rem;
+  text-align: center;
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.remove {
+  padding: 0.35rem 0.6rem;
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-decoration: underline;
+  transition: color 0.2s;
+}
+
+.remove:hover {
+  color: #c94a4a;
+}
+
+.footer {
+  padding-top: 1rem;
+  border-top: 2px solid rgba(212, 175, 55, 0.3);
+}
+
+.total {
+  font-size: clamp(1.15rem, 2.5vw, 1.25rem);
+  color: var(--color-text);
+  margin: 0 0 1rem;
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: clamp(1.6rem, 6vw, 2rem);
+  }
+
+  .qtyBtn {
+    min-width: var(--touch-min);
+    min-height: var(--touch-min);
+  }
+
+  .linkSecondary,
+  .linkPrimary {
+    flex: 1;
+    min-height: var(--touch-min);
+    justify-content: center;
+    text-align: center;
+    font-size: 1.05rem;
+  }
+}
+
+.total strong {
+  color: var(--color-gold);
+}
+
+.buttons {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.linkSecondary {
+  padding: 0.75rem 1.25rem;
+  border: 2px solid var(--color-gold);
+  color: var(--color-gold);
+  text-decoration: none;
+  border-radius: var(--radius);
+  font-weight: 500;
+  transition: background 0.2s, color 0.2s;
+}
+
+.linkSecondary:hover {
+  background: rgba(212, 175, 55, 0.15);
+}
+
+.linkPrimary {
+  padding: 0.75rem 1.5rem;
+  background: var(--color-gold);
+  color: var(--color-bg);
+  text-decoration: none;
+  border-radius: var(--radius);
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.linkPrimary:hover {
+  background: var(--color-gold-light);
+}

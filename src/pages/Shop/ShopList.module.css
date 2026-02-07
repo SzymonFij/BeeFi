@@ -1,0 +1,239 @@
+.page {
+  padding-top: 1rem;
+}
+
+.head {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 5vw, 2.75rem);
+  color: var(--color-gold);
+  margin: 0 0 0.5rem;
+}
+
+.subtitle {
+  font-size: clamp(1.05rem, 2.5vw, 1.15rem);
+  color: var(--color-text-muted);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.card {
+  background: var(--color-card);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+  border-color: rgba(212, 175, 55, 0.4);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.cardImage {
+  height: 140px;
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(0, 0, 0, 0.2) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cardEmoji {
+  font-size: 3.5rem;
+}
+
+.cardBody {
+  padding: 1.25rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.cardTitle {
+  font-family: var(--font-display);
+  font-size: clamp(1.15rem, 2.5vw, 1.25rem);
+  color: var(--color-gold);
+  margin: 0 0 0.5rem;
+}
+
+.cardDesc {
+  font-size: clamp(1rem, 2.5vw, 1.05rem);
+  color: var(--color-text-muted);
+  line-height: 1.55;
+  margin: 0 0 1rem;
+  flex: 1;
+}
+
+.cardFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.price {
+  color: var(--color-text);
+  font-weight: 600;
+  font-size: clamp(1.05rem, 2.5vw, 1.1rem);
+}
+
+.priceUnit {
+  font-weight: 400;
+  font-size: clamp(0.9rem, 2.5vw, 1rem);
+  color: var(--color-text-muted);
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .cardBody {
+    padding: 1.1rem;
+  }
+
+  .linkCart {
+    padding: 0.85rem 1.6rem;
+    min-height: var(--touch-min);
+    font-size: 1.05rem;
+  }
+}
+
+.btnAdd {
+  padding: 0.6rem 1.1rem;
+  min-height: var(--touch-min);
+  border-radius: var(--radius);
+  font-weight: 500;
+  font-size: clamp(0.95rem, 2.5vw, 1rem);
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  border: none;
+  background: var(--color-gold);
+  color: var(--color-bg);
+}
+
+.btnAdd:hover {
+  background: var(--color-gold-light);
+}
+
+.quantity {
+  display: flex;
+  align-items: center;
+  gap: 0.15rem;
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.qtyBtn {
+  min-width: var(--touch-min);
+  min-height: var(--touch-min);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-bg);
+  border: none;
+  color: var(--color-gold);
+  font-size: 1.25rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  padding: 0;
+}
+
+.qtyBtn:hover {
+  background: rgba(212, 175, 55, 0.15);
+}
+
+.qtyNum {
+  min-width: 2.25rem;
+  text-align: center;
+  font-weight: 600;
+  font-size: clamp(1rem, 2.5vw, 1.1rem);
+  color: var(--color-text);
+}
+
+.currencyWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.currencyLabel {
+  font-size: clamp(0.95rem, 2.5vw, 1rem);
+  color: var(--color-text-muted);
+}
+
+.currencyBtns {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.currencyBtn,
+.currencyActive {
+  padding: 0.5rem 1rem;
+  min-height: var(--touch-min);
+  border-radius: var(--radius);
+  font-size: clamp(0.9rem, 2.5vw, 1rem);
+  font-weight: 500;
+  cursor: pointer;
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  background: transparent;
+  color: var(--color-text-muted);
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.currencyBtn:hover {
+  color: var(--color-gold);
+  border-color: var(--color-gold);
+  background: rgba(212, 175, 55, 0.08);
+}
+
+.currencyActive {
+  background: rgba(212, 175, 55, 0.15);
+  color: var(--color-gold);
+  border-color: var(--color-gold);
+}
+
+.empty {
+  text-align: center;
+  color: var(--color-text-muted);
+  padding: 2rem;
+}
+
+.actions {
+  text-align: center;
+}
+
+.linkCart {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border: 2px solid var(--color-gold);
+  color: var(--color-gold);
+  text-decoration: none;
+  border-radius: var(--radius);
+  font-weight: 500;
+  transition: background 0.2s, color 0.2s;
+}
+
+.linkCart:hover {
+  background: var(--color-gold);
+  color: var(--color-bg);
+}

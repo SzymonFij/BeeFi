@@ -1,0 +1,70 @@
+/* Kolorystyka: złoto i czerń — Pasieka BeeFi */
+
+:root {
+  --color-bg: #0d0d0d;
+  --color-bg-header: #0a0a0a;
+  --color-bg-footer: #0a0a0a;
+  --color-bg-hero-start: #141414;
+  --color-card: #141414;
+  --color-text: #e8e6e3;
+  --color-text-muted: #a39f98;
+  --color-gold: #d4af37;
+  --color-gold-light: #e5c84a;
+  --color-gold-dark: #b8962e;
+  --max-width: 72rem;
+  --radius: 8px;
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'Outfit', system-ui, sans-serif;
+  --touch-min: 44px;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --touch-min: 48px;
+  }
+
+  html {
+    font-size: 18px;
+  }
+
+  body {
+    font-size: 1.05rem;
+    line-height: 1.55;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  background: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.5;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  font-family: inherit;
+}
