@@ -8,6 +8,7 @@ import { Contact } from '@/pages/Contact'
 import { ShopList } from '@/pages/Shop/ShopList'
 import { Cart } from '@/pages/Shop/Cart'
 import { Checkout } from '@/pages/Shop/Checkout'
+import { Login } from '@/pages/Login'
 
 export default function App() {
   return (
@@ -22,6 +23,8 @@ export default function App() {
             <Route path="/sklep" element={<ShopList />} />
             <Route path="/sklep/koszyk" element={<Cart />} />
             <Route path="/sklep/zamowienie" element={<Checkout />} />
+            <Route path="/logowanie" element={<Login />} />
+            <Route path="/rejestracja" element={<Login />} />
           </Route>
           </Routes>
         </CartProvider>

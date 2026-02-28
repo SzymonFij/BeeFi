@@ -31,6 +31,9 @@ export function Header() {
           <Link to="/sklep/koszyk" className={styles.cartLink}>
             {totalItems > 0 ? t.nav.cartCount.replace('{count}', String(totalItems)) : t.nav.cart}
           </Link>
+          <NavLink to="/logowanie" className={({ isActive }) => (isActive ? styles.linkActive : styles.link)}>
+            {t.nav.login}
+          </NavLink>
         </nav>
       </div>
     </header>
