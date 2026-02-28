@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { getLocale } from '@/locales'
 import styles from './Login.module.css'
+import { getLoginApiUrl } from '@/api/userApi'
 
 const t = getLocale('pl')
 
@@ -24,21 +25,21 @@ export function Login() {
 
   // Login form state
   const [loginData, setLoginData] = useState({
-    login: '',
+    email: '',
     password: '',
   })
 
   // Register form state
   const [registerData, setRegisterData] = useState({
-    login: '',
+    email: '',
     password: '',
     phone: '',
     country: '',
     city: '',
-    postalCode: '',
+    postal_code: '',
     street: '',
-    houseNumber: '',
-    apartmentNumber: '',
+    house_number: '',
+    apartment_number: '',
   })
 
   const handleLoginChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -51,37 +52,50 @@ export function Login() {
     setRegisterData(prev => ({ ...prev, [name]: value }))
   }
 
-  const handleLoginSubmit = (e: React.FormEvent) => {
+  const handleLoginSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     
-    if (!loginData.login || !loginData.password) {
+    if (!loginData.email || !loginData.password) {
       setMessage({ type: 'error', text: t.login.errorFields })
       return
     }
 
-    // TODO: Implement actual authentication
+    try {
+      const res = await fetch(getLoginApiUrl("/auth/login"), {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(loginData),
+      });
+      const data = await res.json();
+      if (data.error) {
+        return setMessage({ type: 'error', text: `Błąd logowania: ${data.error}` })
+      }
+      setMessage({ type: 'success', text: t.login.successLogin });
+    } catch (error) {
+      setMessage({ type: 'error', text: `Błąd logowania: ${error}` });
+    }
     setMessage({ type: 'success', text: t.login.successLogin })
-    setLoginData({ login: '', password: '' })
+    setLoginData({ email: '', password: '' })
     
     setTimeout(() => {
       setMessage(null)
-      // Redirect to home or dashboard in future
+      navigate('/');
     }, 2000)
   }
 
-  const handleRegisterSubmit = (e: React.FormEvent) => {
+  const handleRegisterSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     
-    const { country, city, postalCode, street, houseNumber } = registerData
+    const { country, city, postal_code, street, house_number } = registerData
     if (
-      !registerData.login ||
+      !registerData.email ||
       !registerData.password ||
       !registerData.phone ||
       !country ||
       !city ||
-      !postalCode ||
+      !postal_code ||
       !street ||
-      !houseNumber
+      !house_number
     ) {
       setMessage({ type: 'error', text: t.login.errorFields })
       return
@@ -91,25 +105,38 @@ export function Login() {
       setMessage({ type: 'error', text: t.login.errorPasswordLength })
       return
     }
-
-    // TODO: Implement actual registration
-    setMessage({ type: 'success', text: t.login.successRegister })
-    setRegisterData({
-      login: '',
-      password: '',
-      phone: '',
-      country: '',
-      city: '',
-      postalCode: '',
-      street: '',
-      houseNumber: '',
-      apartmentNumber: '',
-    })
+    
+    try {
+      const res = await fetch(getLoginApiUrl("/auth/register"), {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(registerData),
+      });
+      const data = await res.json();
+      if (data.error) {
+        return setMessage({ type: 'error', text: `Błąd rejestracji: ${data.error}` })
+      }
+      setMessage({ type: 'success', text: t.login.successRegister });
+    
+      setRegisterData({
+        email: '',
+        password: '',
+        phone: '',
+        country: '',
+        city: '',
+        postal_code: '',
+        street: '',
+        house_number: '',
+        apartment_number: '',
+      });
+    } catch (error) {
+      setMessage({ type: 'error', text: `Błąd rejestracji: ${error}` })
+    }
     
     setTimeout(() => {
       setMessage(null)
       switchMode('login')
-    }, 2000)
+    }, 5000)
   }
 
   return (
@@ -133,9 +160,9 @@ export function Login() {
             <div className={styles.formGroup}>
               <label className={styles.label}>{t.login.loginLabel}</label>
               <input
-                type="text"
-                name="login"
-                value={loginData.login}
+                type="email"
+                name="email"
+                value={loginData.email}
                 onChange={handleLoginChange}
                 className={styles.input}
                 placeholder={t.login.loginPlaceholder}
@@ -163,9 +190,9 @@ export function Login() {
             <div className={styles.formGroup}>
               <label className={styles.label}>{t.login.loginLabel}</label>
               <input
-                type="text"
-                name="login"
-                value={registerData.login}
+                type="email"
+                name="email"
+                value={registerData.email}
                 onChange={handleRegisterChange}
                 className={styles.input}
                 placeholder={t.login.loginPlaceholder}
@@ -225,8 +252,8 @@ export function Login() {
                   <label className={styles.label}>{t.login.postalCodeLabel}</label>
                   <input
                     type="text"
-                    name="postalCode"
-                    value={registerData.postalCode}
+                    name="postal_code"
+                    value={registerData.postal_code}
                     onChange={handleRegisterChange}
                     className={styles.input}
                     placeholder={t.login.postalCodePlaceholder}
@@ -250,8 +277,8 @@ export function Login() {
                   <label className={styles.label}>{t.login.houseNumberLabel}</label>
                   <input
                     type="text"
-                    name="houseNumber"
-                    value={registerData.houseNumber}
+                    name="house_number"
+                    value={registerData.house_number}
                     onChange={handleRegisterChange}
                     className={styles.input}
                     placeholder={t.login.houseNumberPlaceholder}
@@ -262,8 +289,8 @@ export function Login() {
                   <label className={styles.label}>{t.login.apartmentNumberLabel}</label>
                   <input
                     type="text"
-                    name="apartmentNumber"
-                    value={registerData.apartmentNumber}
+                    name="apartment_number"
+                    value={registerData.apartment_number}
                     onChange={handleRegisterChange}
                     className={styles.input}
                     placeholder={t.login.apartmentNumberPlaceholder}

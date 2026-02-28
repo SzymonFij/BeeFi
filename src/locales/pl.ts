@@ -128,7 +128,7 @@ export const pl = {
     registerTitle: 'Rejestracja',
     registerSubtitle: 'Utwórz nowe konto',
     loginLabel: 'Login',
-    loginPlaceholder: 'Wpisz swoją nazwę użytkownika',
+    loginPlaceholder: 'Wpisz swój email',
     passwordLabel: 'Hasło',
     passwordPlaceholder: 'Wpisz swoje hasło',
     phoneLabel: 'Telefon',
